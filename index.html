@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Personal Website</title>
+    <style>
+        :root {
+            --bg-color: rgba(255, 255, 255, 0.8);
+            --nav-color: rgba(51, 51, 51, 0.8);
+            --text-color: #333;
+            --header-color: #fff;
+            --nav-font-color: #333;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-size: 110%;
+            color: var(--text-color);
+            transition: background-color 0.3s, color 0.3s;
+            background-image: url('bg.jpg'); /* Default background image */
+        }
+
+        header {
+            background-color: var(--nav-color);
+            color: var(--header-color);
+            padding: 10px 0;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        nav {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: var(--nav-font-color);
+            transition: color 0.3s;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        #about, #skills, #contact {
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        footer {
+            background-color: var(--nav-color);
+            color: var(--header-color);
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .darkMode {
+            --nav-color: rgba(30, 30, 30, 0.8);
+            --text-color: rgb(255, 255, 255);
+            --header-color: white;
+            --nav-font-color: white;
+            background-image: url('bg-dark.jpg'); /* Dark mode background image */
+        }
+
+        .toggle-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .toggle-button:hover {
+            background-color: #555;
+        }
+
+        .twitter-link {
+            color: var(--nav-font-color);
+        }
+
+        .twitter-link:hover {
+            color: darkblue;
+        }
+    </style>
+</head>
+<body>
+    <button class="toggle-button" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+
+    <header>
+        <h1>MqMr</h1>
+    </header>
+
+
+
+    <div class="container">
+        <section id="about">
+            <h2>About Me</h2>
+            <p>Im MqMr, Simple hacher and develper in unc0verTeam and Security Researcher</p>
+        </section>
+
+        <section id="skills">
+            <h2>Skills</h2>
+            <ul>
+                <li>Game Develper</li>
+                <li>Web Creator</li>
+                <li>Jailbreak Creator</li>
+            </ul>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>You can reach me at:</p>
+            <ul>
+                <li>Twitter Old: <a class="twitter-link" href="https://twitter.com/unc0verTeam" target="_blank">@unc0verTeam</a></li>
+                <li>Twitter New: <a class="twitter-link" href="https://twitter.com/MqMrMqR" target="_blank">@MqMrMqR</a></li>
+                <li>Instagram: <a class="twitter-link" href="https://www.instagram.com/_.wp1/" target="_blank">@_.wp1</a></li>
+
+            </ul>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 [MqMr / pwn20wnd]. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleDarkMode() {
+            const body = document.body;
+            body.classList.toggle('darkMode');
+        }
+    </script>
+</body>
+</html>
