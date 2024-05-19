@@ -19,8 +19,12 @@
             padding: 0;
             background-size: 110%;
             color: var(--text-color);
-            transition: background-color 0.3s, color 0.3s;
+            transition: background-color 0.3s, color 0.3s, backdrop-filter 0.3s;
             background-image: url('bg.jpg'); /* Default background image */
+        }
+
+        body.blur-bg {
+            backdrop-filter: blur(5px);
         }
 
         header {
@@ -49,9 +53,31 @@
             overflow: hidden;
         }
 
-        #about, #skills, #contact {
+        #about, #skills, #contact, #projects {
             padding: 20px;
             margin: 20px 0;
+        }
+
+        #projects {
+            display: flex;
+            justify-content: space-between;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        #projects.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .project {
+            flex: 1;
+            margin: 0 10px;
+            padding: 20px;
+            border: 1px solid var(--nav-color);
+            background-color: var(--bg-color);
+            text-align: center;
         }
 
         footer {
@@ -59,7 +85,7 @@
             color: var(--header-color);
             text-align: center;
             padding: 10px 0;
-            position: fixed;
+            position: relative;
             bottom: 0;
             width: 100%;
             transition: background-color 0.3s;
@@ -105,18 +131,24 @@
         <h1>MqMr</h1>
     </header>
 
-
+    <nav>
+        <a href="#about">About Me</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+        <a href="#projects">Projects</a>
+    </nav>
 
     <div class="container">
         <section id="about">
             <h2>About Me</h2>
-            <p>Im MqMr, Simple hacher and develper in unc0verTeam and Security Researcher</p>
+            <p>Im MqMr, Co Owner in unc0verTeam,</p>
+            <p>Simple hacker and developer and iOS Researcher</p>
         </section>
 
         <section id="skills">
             <h2>Skills</h2>
             <ul>
-                <li>Game Develper</li>
+                <li>Game Developer</li>
                 <li>Web Creator</li>
                 <li>Jailbreak Creator</li>
             </ul>
@@ -126,16 +158,29 @@
             <h2>Contact</h2>
             <p>You can reach me at:</p>
             <ul>
-                <li>Twitter Old: <a class="twitter-link" href="https://twitter.com/unc0verTeam" target="_blank">@unc0verTeam</a></li>
-                <li>Twitter New: <a class="twitter-link" href="https://twitter.com/MqMrMqR" target="_blank">@MqMrMqR</a></li>
+                <li>Twitter: <a class="twitter-link" href="https://twitter.com/unc0verTeam" target="_blank">@unc0verTeam</a></li>
                 <li>Instagram: <a class="twitter-link" href="https://www.instagram.com/_.wp1/" target="_blank">@_.wp1</a></li>
-
             </ul>
+        </section>
+
+        <section id="projects">
+            <div class="project">
+                <h3>Project One</h3>
+                <p>Details about Project One.</p>
+            </div>
+            <div class="project">
+                <h3>Project Two</h3>
+                <p>Details about Project Two.</p>
+            </div>
+            <div class="project">
+                <h3>Project Three</h3>
+                <p>Details about Project Three.</p>
+            </div>
         </section>
     </div>
 
     <footer>
-        <p>&copy; 2024 [MqMr / pwn20wnd]. All rights reserved.</p>
+        <p>&copy; 2024 MqMr. All rights reserved.</p>
     </footer>
 
     <script>
@@ -143,6 +188,29 @@
             const body = document.body;
             body.classList.toggle('darkMode');
         }
+
+        window.addEventListener('scroll', function() {
+            const projectsSection = document.getElementById('projects');
+            const sectionPosition = projectsSection.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight;
+
+            if (sectionPosition < screenPosition) {
+                projectsSection.classList.add('show');
+                document.body.classList.add('blur-bg');
+            } else {
+                projectsSection.classList.remove('show');
+                document.body.classList.remove('blur-bg');
+            }
+
+            if (window.scrollY === 0) {
+                document.body.classList.remove('blur-bg');
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const projectsSection = document.getElementById('projects');
+            projectsSection.classList.remove('show');
+        });
     </script>
 </body>
 </html>
