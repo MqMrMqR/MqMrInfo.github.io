@@ -53,31 +53,39 @@
             overflow: hidden;
         }
 
-        #about, #skills, #contact, #projects {
+        .section {
             padding: 20px;
             margin: 20px 0;
         }
 
-        #projects {
-            display: flex;
-            justify-content: space-between;
+        .section h2 {
+            margin-bottom: 10px;
+        }
+
+        .section p {
+            margin-bottom: 10px;
+        }
+
+        #projects, #more-details-1, #more-details-2, #more-details-3 {
             opacity: 0;
             transform: translateY(50px);
             transition: opacity 1s ease-out, transform 1s ease-out;
         }
 
-        #projects.show {
+        #projects.show, #more-details-1.show, #more-details-2.show, #more-details-3.show {
             opacity: 1;
             transform: translateY(0);
         }
 
-        .project {
+        .project, .more-details {
             flex: 1;
             margin: 0 10px;
             padding: 20px;
-            border: 1px solid var(--nav-color);
-            background-color: var(--bg-color);
             text-align: center;
+        }
+
+        .project h3, .more-details h2 {
+            margin-bottom: 20px;
         }
 
         footer {
@@ -122,6 +130,21 @@
         .twitter-link:hover {
             color: darkblue;
         }
+
+        .download-button {
+            padding: 10px 30px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: width 0.3s ease;
+            width: 150px; /* Initial width */
+        }
+
+        .download-button:hover {
+            width: 170px; /* Expanded width on hover */
+        }
     </style>
 </head>
 <body>
@@ -139,13 +162,13 @@
     </nav>
 
     <div class="container">
-        <section id="about">
+        <section id="about" class="section">
             <h2>About Me</h2>
-            <p>Im MqMr, Co Owner in unc0verTeam,</p>
+            <p>I'm MqMr, Co Owner in unc0verTeam,</p>
             <p>Simple hacker and developer and iOS Researcher</p>
         </section>
 
-        <section id="skills">
+        <section id="skills" class="section">
             <h2>Skills</h2>
             <ul>
                 <li>Game Developer</li>
@@ -154,7 +177,7 @@
             </ul>
         </section>
 
-        <section id="contact">
+        <section id="contact" class="section">
             <h2>Contact</h2>
             <p>You can reach me at:</p>
             <ul>
@@ -163,54 +186,88 @@
             </ul>
         </section>
 
-        <section id="projects">
+        <section id="projects" class="section">
+            <h2>Projects</h2>
             <div class="project">
-                <h3>Project One</h3>
-                <p>Details about Project One.</p>
+                <h3>unc0ver</h3>
+                <button class="download-button">Download</button>
             </div>
             <div class="project">
-                <h3>Project Two</h3>
-                <p>Details about Project Two.</p>
+                <h3>Breaker</h3>
+                <button class="download-button">Download</button>
             </div>
             <div class="project">
-                <h3>Project Three</h3>
-                <p>Details about Project Three.</p>
+                <h3>Shooter Game</h3>
+                <button class="download-button">Download</button>
             </div>
         </section>
-    </div>
 
+        <section id="more-details-1" class="section">
+            <h2>unc0ver</h2>
+            <p>unc0ver the most advanced jailbreak tool</p>
+            <p>unc0ver support iOS 11.0 - 14.8</p>
+        </section>
+
+        <section id="more-details-2" class="section">
+            <h2> Breaker </h2>
+            <p>Breaker Best Jailbreak On 16.x versions</p>
+            <p>Breaker removed by Apple, bcz breaker used forbidden kernel system-wide tweak injection for A16+</p>
+            <p>and this system-wide, allow Seashell fuck your iPhone</p>
+        </section>
+        <section id="more-details-3" class="section">
+            <h2>Overview Shooter Game</h2>
+            <p>FPS Shooter Game, with High-quality and LowPoly Style</p>
+            <p>The game is in the developer's overview version.</p>
+        </section>
+    </div>
+    
     <footer>
         <p>&copy; 2024 MqMr. All rights reserved.</p>
     </footer>
-
+    
     <script>
         function toggleDarkMode() {
             const body = document.body;
             body.classList.toggle('darkMode');
         }
-
+    
         window.addEventListener('scroll', function() {
             const projectsSection = document.getElementById('projects');
+            const moreDetails1 = document.getElementById('more-details-1');
+            const moreDetails2 = document.getElementById('more-details-2');
+            const moreDetails3 = document.getElementById('more-details-3');
+    
             const sectionPosition = projectsSection.getBoundingClientRect().top;
             const screenPosition = window.innerHeight;
-
+    
             if (sectionPosition < screenPosition) {
                 projectsSection.classList.add('show');
                 document.body.classList.add('blur-bg');
             } else {
                 projectsSection.classList.remove('show');
-                document.body.classList.remove('blur-bg');
             }
-
+    
+            if (moreDetails1.getBoundingClientRect().top < screenPosition) {
+                moreDetails1.classList.add('show');
+            }
+    
+            if (moreDetails2.getBoundingClientRect().top < screenPosition) {
+                moreDetails2.classList.add('show');
+            }
+    
+            if (moreDetails3.getBoundingClientRect().top < screenPosition) {
+                moreDetails3.classList.add('show');
+            }
+    
             if (window.scrollY === 0) {
                 document.body.classList.remove('blur-bg');
             }
         });
-
+    
         document.addEventListener('DOMContentLoaded', function() {
             const projectsSection = document.getElementById('projects');
             projectsSection.classList.remove('show');
         });
     </script>
 </body>
-</html>
+</html>    
